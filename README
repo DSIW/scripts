@@ -7,3 +7,23 @@ Jabber:   dsiw@jabme.de
 Blog:     https://dsiw.wordpress.com/
 
 License:  GPLv3
+
+Content:
+.
+├── doc
+│   └── latex
+│       ├── dl-uebungen
+│       ├── lebenslauf
+│       ├── letter
+│       └── newaufgaben
+├── media
+│   └── ziprar-tar
+└── sys
+    ├── backup
+    │   ├── config-files
+    │   └── system
+    ├── installation
+    ├── light
+    └── linefeed
+
+15 directories
