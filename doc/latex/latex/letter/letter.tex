@@ -1,0 +1,52 @@
+\documentclass[DIN,draft=false,paper=a4,fontsize=11pt,pagenumber=false,parskip=half,
+							backaddress=true,fromalign=right,fromrule=afteraddress,
+							fromemail=true,fromurl=false,fromlogo=false,fromphone=true]{scrlttr2}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphics}
+\usepackage[dvips]{graphicx}
+\usepackage{url}            % URL
+\usepackage{microtype}	    % Verbessert Textsatz
+\usepackage{fixltx2e}		    % Verbessert einige Kernkompetenzen von LaTeX2e
+\usepackage{lmodern}		    % skalierbare Schriftfamilie "Latin Modern" (default: bitmapped "Computer Modern")
+\usepackage{setspace}       % Zeilenabstand definieren
+\usepackage{ellipsis}		    % Korrigiert den Weißraum um Auslassungspunkte
+%\usepackage{ae}
+\usepackage[a4paper, bookmarks=false, bookmarksopen=false, bookmarksnumbered=true, pdfauthor={Max Mustermann}, pdftitle={Brief}, colorlinks, linkcolor=black, urlcolor=black]{hyperref}
+%\usepackage{lineno}
+\usepackage{blindtext}
+\areaset[0cm]{146mm}{27cm}
+
+%%Dieses Kommando setzt einen Backslash,
+%%an dem ohne ein Trennzeichen getrennt werden kann
+\newcommand{\trennBS}{{\tt\char92}" "}
+
+\title{Brief}
+\author{Max Mustermann}
+\date{\today}
+
+\setkomavar{fromname}{Max Mustermann}
+\setkomavar{fromaddress}{Musterstraße.~1\\12345~Musterstadt}
+\setkomavar{subject}{Betreff}
+\setkomavar{fromphone}{01234-123456}
+\setkomavar{fromemail}{mail@tld.de}
+\setkomavar{signature}{Max Mustermann}
+
+\LoadLetterOption{DIN}
+
+\begin{document}
+
+
+\begin{letter}{Max Musterempfänger\\Musterstraße 1\\01010~Musterstadt}
+
+\opening{Sehr geehrte Damen und Herren,}
+
+\blindtext
+
+\closing{Mit freundlichen Grüßen}
+\ps{Ich bitte um eine schnelle Erledigung.}
+\encl{Anlage 1\\Anlage 2\\Anlage 3}
+
+\end{letter}
+\end{document}

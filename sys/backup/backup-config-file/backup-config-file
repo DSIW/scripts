@@ -1,0 +1,45 @@
+#!/bin/bash
+BACKUP_DIR="/home/$(whoami)/sys/backup/sys/configs/" 
+CONFIG_LOG="$BACKUP_DIR/configs.log"
+
+ERROR=0
+
+if [ $# -lt 1 ]; then
+  echo "Es müssen Parameter gesetzt sein!"
+  exit 1;
+fi
+
+mkdir -p $BACKUP_DIR
+
+for arg in $@; do
+  if ! sudo cp --parents "$arg" "$BACKUP_DIR"; then
+    ERROR=1 
+    continue
+  fi
+
+  ALREADY_IN=0
+  configs=$(xargs --no-run-if-empty -a $CONFIG_LOG)
+  # test, if the config file is already in the logfile.
+  for line in $configs; do
+    if [[ $line == $arg ]]; then
+      ALREADY_IN=1
+      break
+    fi
+  done
+
+  # write the config file in the logfile, if it isn't in there.'
+  #[ $ALREADY_IN ] || echo "$arg" >> "$CONFIG_LOG" && echo "written"
+  if [ $ALREADY_IN -eq 0 ]; then
+    echo "$arg" >> "$CONFIG_LOG"
+  fi
+
+  echo "Konfigurationsdatei '$arg' wurde in '$BACKUP_DIR' erfolgreich gesichert."
+done
+
+if [ $ERROR -eq 0 ]; then 
+  echo "Backup war erfolgreich."
+else 
+  echo "Backup war nicht erfolgreich."
+fi
+
+exit 0

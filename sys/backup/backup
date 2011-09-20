@@ -1,0 +1,13 @@
+#!/bin/sh
+MOUNTPOINT="/media/backup"
+if [ -z "$MOUNTPOINT" ] || [ -n "$(mount | fgrep "$MOUNTPOINT")" ]; then
+	notify-send -i /usr/share/icons/Humanity/actions/48/gtk-save.svg "Backup" "started"
+	sudo /home/USER/bin/backup.sh
+	notify-send -i /usr/share/icons/Humanity/actions/48/gtk-ok.svg "Backup" "completed"
+	sudo hdparm -y /dev/backup-extern
+else
+	notify-send -i /usr/share/icons/Humanity/status/48/error.svg "Backup not mounted."
+#	echo "Backup not mounted. Please mount der partition." | wall
+	zenity --error --text "Der MOUNT-Punkt $MOUNTPOINT wurde nicht eingebunden! Bitte mounten Sie mit 'mountbackup'." --title "Backup fehlgeschlagen"
+	sudo /home/USER/bin/mountbackup
+fi

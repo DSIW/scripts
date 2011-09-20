@@ -1,0 +1,269 @@
+% Schriftgröße, Layout, Papierformat, Art des Dokumentes
+%\documentclass[12pt,oneside,a4paper]{scrartcl}
+
+% Zeilenabstand definieren
+%\usepackage{mathpazo}
+%\linespread{1.5}
+%\renewcommand{\baselinestretch}{1.3}
+%\onehalfspacing
+
+% Kein Einzug bei Absatzanfang
+\setlength{\parindent}{0cm}
+
+% Kopf- und Fußzeile
+\pagestyle{fancy}
+\fancyhf{}
+
+% Aussehen von Fußnoten (wird nur für URLs genutzt)
+\renewcommand{\thefootnote}{{\footnotesize [\arabic{footnote}]}}
+
+% Bilder befinden sich im folgenen Pfad.
+\graphicspath{{grafiken/}} % Dort liegen die Bilder des Dokuments
+
+% Kopfzeile links bzw. innen
+\fancyhead[L]{\modul}
+% Kopfzeile rechts bzw. außen
+\fancyhead[R]{\titel}
+% Linie oben
+\renewcommand{\headrulewidth}{0.5pt}
+
+% Fußzeile links bzw. innen
+\fancyfoot[L]{\autor\ (\matrikelnr)\\\autormailstudium}
+% Fußzeile mittig
+\fancyfoot[C]{Seite \thepage{} von \pageref{LastPage}}
+% Fußzeile rechts bzw. außen
+\fancyfoot[R]{\datum \\ {\scriptsize Version: \version}}
+% Linie unten
+\renewcommand{\footrulewidth}{0.5pt}
+
+% Quellenangaben in eckige Klammern fassen
+\bibpunct{[}{]}{;}{a}{}{,~}
+
+% Quellcode (Listing)
+\lstloadlanguages{C,JAVA}
+\lstset{
+	numbers=left,
+	numberstyle=\tiny,
+	stepnumber=1,
+	numbersep=7pt
+}
+\lstset{language=Java,
+	lineskip=1pt,				% Zeilenabstand
+	breakatwhitespace=true,
+	title=\lstname,
+	language={},                % keine Sprache definiert
+    basicstyle=\small\ttfamily, % Schriftstil
+    %columns=fixed,              % fest Spaltenbreite
+    tabsize=2,                  % Tabs haben Breite von 2
+    frame=single,               % einfacher Rahmen
+    framesep=1pt,               % Abstand des Rahmens
+    framerule=0.5pt,            % Linienstaerke des Rahmens
+    backgroundcolor=\color{hellgrau},	% Hintergrundfarbe
+    rulecolor=\color{dunkelgrau},  % Farbe der Rahmenlinie
+    extendedchars=true,         % erweiterter Zeichensatz (geht nicht)
+    showspaces=false,           % Leerzeichen nicht extra darstellen
+    showstringspaces=false,     % Leerzeichen in String nicht extra darstellen
+    breaklines=true,            % automatischen Umbruch aktivieren
+    %breakindent=0pt,            % Einrueckung nach Umbruch
+    prebreak=\mbox{$\ \curvearrowright$},     % Pfeil als Umbruchzeichen
+    xleftmargin=1.8pt,          % linker Abstand vom Rand (= framesep)
+    xrightmargin=1.8pt,         % rechter Abstand vom Rand  (= framesep)
+    aboveskip=1em,              % Abstand vor einer Box
+    belowskip=0em,              % Abstand nach einer Box
+    %captionpos=b,               % Position des Untertitels
+  	%keywordstyle=\bfseries\color{darkred},
+  	%stringstyle=\color{darkblue},
+  	%commentstyle=\itshape\color{darkgreen},
+  	%emph={square}, 
+  	%emphstyle=\color{blue}\texttt,
+  	%emph={[2]root,base},
+  	%emphstyle={[2]\color{yac}\texttt},
+}
+% Farben definieren
+\lstset{
+	keywordstyle=\bfseries\color{purple},
+	commentstyle=\itshape\color{dunkelgrau},
+	stringstyle=\color{darkblue},
+}
+
+% URL Umbruch definieren
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks\do\a%
+\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n%
+\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\&}
+
+% Tikz-Einstellungen
+%\PreviewEnvironment{tikzpicture}
+%\setlength\PreviewBorder{5pt}
+
+% Änderung der KOMA-Befehle für die Überschriften (andere Gestaltung):
+%\definecolor{partcolor}{rgb}{.176,0,.367}
+%\definecolor{chaptercolor}{rgb}{.176,0,.367}
+\definecolor{sectioncolor}{rgb}{.176,0,.367}
+%\definecolor{paragraphcolor}{rgb}{.176,0,.367}
+%\addtokomafont{part}{\normalfont\Huge\bfseries\sffamily\color{partcolor}}
+%\addtokomafont{partnumber}{\normalfont\Huge\bfseries\sffamily\color{partcolor}}
+%\addtokomafont{chapter}{\normalfont\Huge\bfseries\sffamily\color{chaptercolor}\hspace*{-1cm}}
+%\addtokomafont{section}{\color{sectioncolor}\vspace*{-0.4cm}}
+%\addtokomafont{subsection}{\color{sectioncolor}\vspace*{-0.3cm}}
+%\addtokomafont{subsubsection}{\color{sectioncolor}}
+%\addtokomafont{paragraph}{\normalfont\small\bfseries\sffamily\color{paragraphcolor}}
+%\addtokomafont{subparagraph}{\normalfont\small\itshape\sffamily\color{paragraphcolor}}
+
+%%% marginrule
+\colorlet{marginColor}{black!5}
+\newcommand\marginrule[1]{%
+  \begingroup
+  \color{blue}\arrayrulewidth1pt
+  \fboxsep0pt\fboxrule0pt
+  \marginnote{%
+    \fcolorbox{marginColor}{marginColor}{%
+      \parbox[t]{\marginparwidth}{%
+      \ifodd\value{page}%  
+      \begin{tabular}{|@{~}p{\marginparwidth}@{}}
+        \begin{spacing}{1}
+          \RaggedRight\mbox{}\footnotesize\itshape\color{blue}#1
+          \vskip-2.5\baselineskip
+        \end{spacing}
+      \end{tabular}
+      \else
+      \begin{tabular}{@{}p{\marginparwidth-3pt}@{~}|}
+        \begin{spacing}{1}
+          \RaggedLeft\mbox{}\footnotesize\itshape\color{blue}#1
+          \vskip-2.5\baselineskip
+        \end{spacing}
+      \end{tabular}
+      \fi
+    }}%
+  }%
+  \endgroup
+}
+
+% Verweise
+%\crefname { equation }{ Gleichung }{ Gleichungen }
+\crefname { definition }{ Definition }{ Definitionen }
+\crefname { pic }{ Abbildung }{ Abbildungen }
+%\crefname { table }{ Tabelle }{ Tabelle }
+%\crefname { figure }{ Figur }{ Figuren }
+\crefformat { equation }{ Gleichung ~#2(#1) #3}
+\crefformat { shadedefinitions }{#2Definition~#1#3}
+\crefformat { pic }{ Abbildung ~#2(#1) #3}
+%\crefformat { table }{ Tabelle ~#2(#1) #3}
+%\crefformat { figure }{ Figur ~#2(#1) #3}
+%\crefrangeformat { equation }{ Gleichungen ~#3(#1) #4 bis ~#5(#2) #6}
+%\crefmultiformat { equation }{ Gleichungen ~#2(#1) #3} { und ~#2(#1) #3}{ , #2(#1) #3}{ und ~#2(#1) #3}
+
+% Schusterjungen und Hurenkinder vermeiden
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty = 10000
+
+% Mathematik-Layout
+\newshadetheorem{thms}{Satz}
+\newshadetheorem{beweise}{Beweis}
+\newshadetheorem{definitions}{Definition}[section]
+\newshadetheorem{cors}{Korollar}
+\newshadetheorem{zuss}{Zusammenfassung}
+\newshadetheorem{axioms}{Axiom}
+\newshadetheorem{bsps}{Beispiel}
+
+\newenvironment{thm}[1][]{%
+  \definecolor{shadethmcolor}{rgb}{.9,.9,.95}%
+  \definecolor{shaderulecolor}{rgb}{0.0,0.0,0.4}%
+  \setlength{\shadeboxrule}{1.5pt}%
+  \begin{thms}[#1]%\hspace*{1mm}%
+}{\end{thms}{\hspace{\stretch{1}}\rule{1ex}{1ex}}
+}
+
+\newenvironment{beweis}[1][]{%
+  \definecolor{shadethmcolor}{HTML}{EAEAEA}%
+%  \definecolor{shaderulecolor}{rgb}{0.0,0.0,0.4}%
+%  \setlength{\shadeboxrule}{1.5pt}%
+  \begin{beweise}[#1]%\hspace*{1mm}%
+}{\end{beweise}{\hfill}\rule{1ex}{1ex}}
+
+\newenvironment{definition}[1][]{%
+	\definecolor{shadethmcolor}{HTML}{EAEAEA}
+  \definecolor{shaderulecolor}{HTML}{525252}
+  \setlength{\shadeboxrule}{0.5pt}%
+  \begin{definitions}[#1]\hspace*{1mm}%
+}{\end{definitions}}
+
+%\newenvironment{bsp}[1][]{%
+%  \definecolor{shadethmcolor}{rgb}{.9,.9,.95}%
+%  \definecolor{shaderulecolor}{rgb}{0.0,0.0,0.4}%
+%  \setlength{\shadeboxrule}{1.5pt}%
+%  \begin{bsps}[#1]\hspace*{1mm}%
+%}{\end{bsps}}
+
+%
+%   Für Sätze, Definitionen und Beispiele
+%   ein * unterdrückt eine Nummerierung
+%
+\newtheorem*{fakt}{Fakt}
+\newtheorem{fazit}{Fazit}
+\newtheorem{satz}{Satz}
+\newtheorem{theo}{Theorem}
+\newtheorem{lemma}[satz]{Lemma}
+% Bemerke hier das zusätzliche [satz]: Dies bewirkt,
+% dass ein Satz und ein Lemma den gleichen Zähler verwenden
+\newtheorem{chara}{Charakterisierung}
+
+% Definitionen haben einen anderen Stil als Sätze
+\theoremstyle{definition}
+\newtheorem{defi}{Definition}[section]
+\newtheorem{termi}{Terminologie}
+
+% Remark hat ebenfalls einen anderen Stil
+\theoremstyle{remark}
+\newtheorem*{beh}{Behauptung}
+\newtheorem{bem}{Bemerkung}
+\newtheorem*{rem}{Bemerkung}
+\newtheorem*{beo}{Beobachtung}
+\newtheorem*{folg}{Folgerung}
+\newtheorem{korr}{Korollar}
+\newtheorem*{bsp}{Beispiel}
+\newtheorem*{bspe}{Beispiele}
+
+% Dies ist die einfachste Methode, den Beweisnamen umzunennen
+\renewcommand{\proofname}{Beweis}
+
+% Wer Beweis gerne anders formatiert haben will, muss folgendes benutzen:
+\newcommand{\proofend}{\begin{flushright}$\Box$\end{flushright}}
+%\renewcommand{\proof}{\textbf{Beweis}: }
+
+\newcommand{\proofcon}{\textbf{Beweis} (durch Kontraposition):}
+\newcommand{\proofind}{\textbf{Beweis} (indirekt): }
+\newcommand{\induction}[1]{\textbf{Beweis} (durch vollständige Induktion nach $#1$): }
+\newcommand{\inda}[2]{\textit{Induktionsanfang ($#1=#2$): }}
+\newcommand{\indv}{\textit{Induktionsvoraussetzung ($\star$): }}
+\newcommand{\inds}[1]{\textit{Induktionsschritt ($#1\rightsquigarrow #1+1$): }}
+
+%
+% wenn man nicht immer "\begin{proof}[Beweis]" eingeben will: "\begin{bew}":
+%
+\newenvironment{bew}
+	{\begin{proof}[\textbf{Beweis}: ]}
+	{\end{proof}}
+\newenvironment{direkt}
+	{\begin{proof}[\textbf{Beweis} (direkt): ]}
+	{\end{proof}}
+%\newenvironment{induktion}[1]
+%	{\begin{proof}[\induction[#1]]}
+%	{\end{proof}}
+\newenvironment{induktion}
+	{\begin{proof}[\textbf{Beweis} (durch vollständige Induktion): ]}
+	{\end{proof}}
+\newenvironment{kontrapos}
+	{\begin{proof}[\proofcon]}
+	{\end{proof}}
+\newenvironment{indirekt}
+	{\begin{proof}[\proofind]}
+	{\end{proof}}
+
+\newenvironment{alphenumi}%
+    {\renewcommand{\labelenumi}{\alph{enumi})}\begin{enumerate}}
+    {\end{enumerate}}
+\newenvironment{adenumi}%
+    {\renewcommand{\labelenumi}{{ad} \arabic{enumi})}\begin{enumerate}}
+    {\end{enumerate}}
+

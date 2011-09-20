@@ -1,0 +1,146 @@
+% Einstellungen der Seitenränder
+\usepackage[left=2.5cm,right=2.5cm,top=2cm,bottom=3cm,includeheadfoot]{geometry}
+
+% Pakete
+
+% Schrift
+\usepackage[ngerman]{babel} % neue Rechtschreibung
+\usepackage[utf8]{inputenc}	% Umlaute ermöglichen
+\usepackage[T1]{fontenc} % Font ändern
+% Times/Arial-Schriftarten:
+%\usepackage{mathptmx} 
+%\usepackage[scaled=.92]{helvet}
+%\usepackage{courier}
+% Schrift Palatino
+%\usepackage[osf]{mathpazo}
+%\linespread{1.05}
+% Schrift Libertine
+%\usepackage[osf]{libertine}
+
+% Grafiken
+\usepackage{rotating}       % drehbare Bilder/Texte/Tabellen
+\usepackage{pdfpages}       % PDF einbinden
+\usepackage{graphicx}       % Grafiken einfügen
+%\usepackage{subfig}					% Grafiken einfügen
+%\usepackage[subfigure]{tocloft}
+\usepackage{capt-of}        % Ermöglicht das Beschriften von Tabellen ohne figure-Umgebung
+\usepackage{subfigure}	    % Unterbilder
+%\usepackage[nooneline]{subfigure}
+%\usepackage{tikz}						% Zeichnungen
+\usepackage{keystroke}			% Tastatur
+\usepackage{listings}       % Listings -> Quellcodedarstellung für viele verschiedene Sprachen
+\usepackage{picinpar}         % verwenden von umflossenen Grafiken
+% Einbindung von allen Grafikformaten möglich
+\usepackage{pst-pdf}        % pstricks und ps grafiken in pdflatex
+\usepackage{pst-all}
+\usepackage{pstricks-add}
+% für Fließumgebungen
+% Platzierung H zwingt LaTeX Fließumgebungen genau an diese Stelle zu setzen
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{moreverb}		    % erweiterte verbatim Umgebung
+\usepackage{pdfpages}		    % Einbinden von PDF Seiten aus PDF Dokument
+\usepackage{cmap}		        % to make the PDF files "searchable and copyable" in pdf viewer
+%\usepackage{header}         % Beschriftung der Abbildungen und Tabellen nach Kapitelzugehörigkeit,
+
+% Tabellen
+\usepackage{multirow}		    % mehrere Zeilen in einer Tabelle zusammenfassen
+\usepackage{ltxtable}		    % longtable und tabularx vereint in einer Tabelle, lädt automatisch beide Pakete
+
+% Mathematik
+\usepackage{amsmath,amsfonts, amssymb, amstext, amsthm, shadethm}
+%\usepackage{mathabx} % Mathematische Symbole
+\usepackage{nicefrac}		    % Darstellung eines Bruchs im Fließtext; Aussehen zB 1/4
+\usepackage{textcomp}		    % einige Text-Mode Mathe Symbole, wie zB Mal-Zeichen x (siehe The Comprehensive LaTeX Symbol List)
+
+% Symbole
+\usepackage{units}		      % Einheiten komfortabel darstellen \unit[Zahlenwert]{Einheit}
+\usepackage{gensymb}	    	% celsius, micro, ohm, perthousand, degree in Mathe und Textmodus
+\usepackage{eurosym}        % Euro-Sybol
+
+% Layout
+\usepackage{microtype}	    % Verbessert Textsatz
+\usepackage{fixltx2e}		    % Verbessert einige Kernkompetenzen von LaTeX2e
+
+\usepackage{lmodern}		    % skalierbare Schriftfamilie "Latin Modern" (default: bitmapped "Computer Modern")
+\usepackage{fancyhdr}       % Kopf- und Fußzeilen, speziell formatierbar, mit Trennlinien
+\usepackage{booktabs}       % laden der booktabs.sty für Querlinien in Tabellen (\toprule, \midrule, \bottomrule)
+\usepackage{multicol}				% Spalten
+\usepackage{ulem}           % Packet für Textunterstreichungen
+\usepackage{caption}        % Beschriftungspaket (hier: für Beschriftung der Anlagen mit \caption[]{...} ohne Eintrag ins Abb.-verz. zu erzeugen)
+\usepackage{paralist}				% weitere Listen-Umgebungen: compact|aspara|inpara: compactitem, compactenum, inparaenum
+\usepackage{caption}		    % viele caption Formatierungsmöglichkeiten
+\usepackage{chngcntr}       % Zum fortlaufenden Durchnummerieren der Fußnoten
+\usepackage{setspace}       % Zeilenabstand definieren
+%\usepackage[activate]{pdfcprot} % Optischer Randausgleich (Symbole werden leicht weiter rechts ausgerichtet.)
+\usepackage{marginnote}     % Randbemerkung
+\usepackage{ellipsis}		    % Korrigiert den Weißraum um Auslassungspunkte
+\usepackage[square]{natbib} % Wichtig für korrekte Zitierweise
+
+% Farben
+\usepackage{color, xcolor}  % Farbe benutzen
+\usepackage{colortbl}       % Verwenden vordefinierter Farben
+
+%% Sonstiges
+\usepackage{xspace}   	    % Leerzeichen auch bei parameterlosen Befehlen
+\usepackage{blindtext}      % Blindtext zum Testen von Textausgaben
+%\usepackage[german, colorinlistoftodos]{todonotes}			% TODO verwalten - BENÖTIGT ggf.: ifthen, tikz, xkeyval, calc, xcolor
+
+% undefinierbar
+%\usepackage[hang,bottom]{footmisc}
+%\usepackage[active,tightpage]{preview}
+
+%\usepackage[norefpage,intoc,german]{nomencl}
+
+%Verweise / Verzeichnisse
+\usepackage[% PDF-Optionen
+% 	%pdftex,
+% 	%bookmarks,
+% 	%bookmarksnumbered=true,
+% 	%bookmarksopen=true,
+% 	%breaklinks=true,
+	pdftitle={\titel},
+	pdfauthor={\autor},
+	pdfcreator={\autor},
+	pdfsubject={\titel},
+	pdfkeywords={\titel\ \untertitel},
+	colorlinks=true,
+% 	%linkcolor=red, % einfache interne Verknüpfungen
+% 	%linktoc=all,
+	linkcolor=black,%
+% 	anchorcolor=black,% Ankertext
+% 	citecolor=green, % Verweise auf Literaturverzeichniseinträge im Text
+% 	filecolor=magenta, % Verknüpfungen, die lokale Dateien öffnen
+% 	menucolor=black, % Acrobat-Menüpunkte
+% 	%pagecolor=red, % Verknüpfungen zu anderen Seiten
+% 	%urlcolor=cyan,
+	urlcolor=black,%
+% %	backref, % inkompatibel mit cleveref
+% 	%pagebackref=true,
+% 	%plainpages=true,% zur korrekten Erstellung der Bookmarks
+% 	%pdfpagelabels=true,% zur korrekten Erstellung der Bookmarks
+% 	%hypertexnames=false,% zur korrekten Erstellung der Bookmarks
+% 	%linktocpage %Seitenzahlen anstatt Text im Inhaltsverzeichnis verlinken
+]{hyperref}
+\usepackage{lastpage}      				% Seiteanzahl f. Fusszeile
+\usepackage[ngerman]{varioref}		% Relative Verweisangaben (auf vorheriger/nächster Seite)
+\usepackage[ngerman]{cleveref}		% Verweis - WICHTIG: NACH HYPERREF EINBINDEN!
+\usepackage{acronym}		    % Abkürzungsverzeichnis --> nur verwendete Abkürzungen listen [printonlyused]
+\usepackage{bibgerm}		    % deutsches Literaturverzeichnis
+\usepackage{url}            % URL
+\usepackage{hypbmsec}
+
+%\usepackage{index}          % Index
+\usepackage{makeidx}        % Für Index-Ausgabe (\printindex)
+%\usepackage{minitoc}        % zwischeninhaltsverzeichnis (hier: anlagenverzeichnis)
+%\usepackage{mtcoff}         % aktivieren für minitoc "AUS"
+
+% Symbolverzeichnis
+% 	makeindex.exe %Name%.nlo -s nomencl.ist -o %Name%.nls
+%		Die Definitionen sind ausgegliedert in die Datei Abkuerzungen.tex.
+\usepackage[intoc]{nomencl}
+  \let\abbrev\nomenclature
+  \renewcommand{\nomname}{Glossar und Abkürzungsverzeichnis}
+  \setlength{\nomlabelwidth}{.25\hsize}
+  \renewcommand{\nomlabel}[1]{#1 \dotfill}
+  \setlength{\nomitemsep}{-\parsep}

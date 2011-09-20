@@ -1,0 +1,3 @@
+#!/bin/bash
+PPA=$1
+sudo add-apt-repository ${PPA} && echo "${PPA}" >> ~/dokumente/skripte/install-os/ppa.list && echo "--- PPA: ${PPA} wurde zu ppa.list hinzugefügt! ---"

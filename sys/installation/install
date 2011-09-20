@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Installation und Update der install-own.sh
+
+sudo aptitude install $* && echo "sudo aptitude -y install $*" >> ~/dokumente/skripte/install-os/install-own.sh && echo "--- $* zu install-own.sh hinzugefügt! ---"

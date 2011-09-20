@@ -1,0 +1,5 @@
+#!/bin/bash
+ppa:disper-dev/ppa # disper
+ppa:flozz/flozz # nautilus-terminal
+ppa:fredp/ppa # eject
+ppa:artfwo/ppa # indicator-cpufreq

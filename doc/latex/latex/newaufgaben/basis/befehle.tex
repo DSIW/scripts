@@ -1,0 +1,174 @@
+% Farben
+\definecolor{orange}{rgb}{1,0.39,0.04}
+\definecolor{dunkelblau}{rgb}{0,0.08,0.45} 
+\definecolor{dunkelgrau}{gray}{0.35}
+\definecolor{mittelgrau}{gray}{0.85}
+\definecolor{hellgrau}{gray}{0.93}
+\definecolor{hellgelb}{rgb}{1.0,1.0,0.9}
+
+% Font ändern
+\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+
+% Abkürzungen mit korrektem Leerraum 
+\newcommand{\ua}{\mbox{u.\,a.}\xspace}
+\newcommand{\zB}{\mbox{z.\,B.}\xspace}
+\newcommand{\dahe}{\mbox{d.\,h.}\xspace}
+\newcommand{\Dahe}{\mbox{D.\,h.}\xspace}
+\newcommand{\Vgl}{Vgl.\xspace}
+\newcommand{\bzw}{bzw.\xspace}
+\newcommand{\evtl}{evtl.\xspace}
+\newcommand{\uvm}{uvm.\xspace}
+\newcommand{\usw}{usw.\xspace}
+\newcommand{\bzgl}{bzgl.\xspace}
+\newcommand{\gdw}{gdw.\xspace}
+\newcommand{\ex}{existiert\xspace}
+
+\newcommand{\abbildung}[1]{Abbildung~\ref{fig:#1}}
+
+\newcommand{\bs}{$\backslash$}
+
+% erzeugt ein Listenelement mit fetter Überschrift 
+\newcommand{\itemd}[2]{\item{\textbf{#1}}\\{#2}}
+
+% einige Befehle zum Zitieren
+\newcommand{\Zitat}[2][\empty]{\ifthenelse{\equal{#1}{\empty}}{\citep{#2}}{\citep[#1]{#2}}}
+
+% zum Ausgeben von Autoren
+\newcommand{\AutorName}[1]{\textsc{#1}}
+\newcommand{\Autor}[1]{\AutorName{\citeauthor{#1}}}
+\newcommand{\mailto}[1]{\href{mailto:#1}{#1}}
+
+% verschiedene Befehle um Wörter semantisch auszuzeichnen
+\newcommand{\NeuerBegriff}[1]{\textbf{#1}\index{#1}}
+\newcommand{\NeuerBegriffUnterkategorie}[2]{\textbf{#2}\index{#1!#2}}
+\newcommand{\NeuerBegriffoIndex}[1]{\textbf{#1}}
+
+\newcommand{\Fachbegriff}[1]{\textit{#1}}
+
+\newcommand{\Eingabe}[1]{\texttt{#1}}
+\newcommand{\Code}[1]{\texttt{#1}}
+\newcommand{\Datei}[1]{\texttt{#1}}
+
+\newcommand{\Datentyp}[1]{\textsf{#1}}
+\newcommand{\XMLElement}[1]{\textsf{#1}}
+\newcommand{\Webservice}[1]{\textsf{#1}}
+
+% Hier werden Bilder nicht mehr mit "Bild" benannt sondern "Abbildung"
+\renewcommand{\figurename}{Abbildung}
+
+% Neuen Befehl zum Einfügen von Bildern definieren
+\newcommand{\bild}[3]{
+  \begin{figure}[ht]
+   \centering
+      \includegraphics[width=#2]{#1}
+      \caption{#3}
+      \label{fig:#1}
+  \end{figure}
+}
+
+% URL als Fußnote
+\newcommand*{\fnurl}[1]{{\footnote{{\footnotesize \url{#1}}}}}
+% Weitere "Fußnoten" (ACHTUNG: statisch!)
+\newcommand{\fnurln}[1]{\raisebox{1ex}{\footnotesize{[#1]}}}
+
+% TODO-Befehl
+\newcommand{\todo}[1]{\textbf{\textsc{\color{red}{(TODO: #1)}}}}
+%\newcommand{\todo}[1]{\todo{#1}}
+%\newcommand{\todo}[2][]{\todo[#1]{#2}}
+
+%\newcommand{\todoupdate}[1]{\todo[color=blue!40]{#1}}
+%\newcommand{\todoupdate}[2][]{\todo[color=blue!40,#1]{#2}}
+%
+%\newcommand{\todoquestion}[1]{\todo[color=red!40]{#1}}
+%\newcommand{\todoquestion}[2][]{\todo[color=red!40,#1]{#2}}
+%
+%\newcommand{\todocomment}[1]{\todo[color=green!40]{#1}}
+%\newcommand{\todocomment}[2][]{\todo[color=green!40,#1]{#2}}
+%
+%\newcommand{\todoformat}[1]{\todo[color=yellow!40]{#1}} 
+%\newcommand{\todoformat}[2][]{\todo[color=yellow!40,#1]{#2}}
+
+% Überschriften mit Label
+\newcommand{\mchapter}[1]{\chapter{#1}\label{cha:#1}}
+\newcommand{\msection}[1]{\section{#1}\label{sec:#1}}
+\newcommand{\submsection}[1]{\subsection{#1}\label{ssec:#1}}
+\newcommand{\subsubmsection}[1]{\subsubsection{#1}\label{sssec:#1}}
+\newcommand{\subsubsubmsection}[1]{\textbf{\textsf{#1}\label{ssssec:#1}}}
+
+% Hoch- und Tiefstellen
+\newcommand{\up}[2]{#1\textsuperscript{#2}}
+\newcommand{\down}[2]{#1\textsubscript{#2}}
+\newcommand{\ggT}[1]{\textnormal{\mbox{ggT($#1$)}}}
+
+\renewcommand{\deg}[2]{\mbox{$\textnormal{deg}_{#1}\left(#2\right)$}}
+\newcommand{\indeg}[2]{\mbox{$\textnormal{indeg}_{#1}\left(#2\right)$}}
+\newcommand{\outdeg}[2]{\mbox{$\textnormal{outdeg}_{#1}\left(#2\right)$}}
+
+% Vereinfachungen f. Mathematik
+
+% Befehl „\ensuremath{...}“ prüft ob in Mathe-Modus, wenn ja > ok; sonst erstellen
+\newcommand{\Gesetz}[1]{\text{\footnotesize{Gesetz: \textsc{#1}}}}
+\newcommand{\folgt}{\newline \ensuremath{\stackrel{Folge}{\Longrightarrow}}\xspace}
+\newcommand{\ufkt}[1]{\ensuremath{#1^{-1}}}
+\newcommand{\equivklasse}[1]{\ensuremath{\lek #1 \rek_\sim}}
+% \Longleftrightarrow[60]
+
+% Klammern
+\newcommand{\lrk}{\left(}
+\newcommand{\rrk}{\right)}
+\newcommand{\lgk}{\left\{}
+\newcommand{\rgk}{\right\}}
+\newcommand{\lek}{\left[}
+\newcommand{\rek}{\right]}
+
+% boolsche Werte
+\newcommand{\true}{\textsc{(True)}}
+\newcommand{\false}{\textsc{(False)}}
+
+% Zahlenraeume
+\newcommand{\fline}{\bigskip\noindent}
+\newcommand{\field}[1]{\ensuremath{\mathbb{#1}}\xspace}
+\newcommand{\N}{\field{N}}
+\newcommand{\Z}{\field{Z}}
+\newcommand{\Q}{\field{Q}}
+\newcommand{\R}{\field{R}}
+\newcommand{\C}{\field{C}}
+\newcommand{\K}{\field{K}}
+% Das Differential-d, aus der Klasse bgteubner
+\makeatletter
+\let\origd=\d
+\renewcommand*\d{
+  \relax\ifmmode
+    \mathrm{d}%
+  \else
+    \expandafter\origd
+  \fi
+}\makeatother
+\newcommand{\expo}[1]{\exp\left\{{#1}\right\}}
+\newcommand{\series}[1]{\sum_{#1}^{\infty}}
+\newcommand{\stetig}[2]{\mathscr{C}(#1,#2)}
+\newcommand{\topologie}{\mathfrak{T}}
+
+% Einheiten
+%\newcommand{\degree}{\ensuremath{^\circ}}
+\newcommand{\gradc}[1]{\ensuremath{#1\,^{\circ}\mathrm{C}}}
+
+% Symbole
+%\newcommand{\entspricht}{\ensuremath{\stackrel{\scriptscriptstyle\wedge}{=}}\xspace}
+\newcommand{\entspricht}{\ensuremath{\triangleq}\xspace}
+
+% Makro für Tasten
+% \Taste{x} für eine Taste und
+% \TasteZ(wei){x}{y}, \TasteD(rei){x}{y}{z} ... für Kombinationen
+% Benutzung: \TasteZ{Strg}{Q} für Tastenkombination Strg+q
+\newcommand*{\Taste}[1]{\keystroke{#1}}
+% Makro für Tasten
+%\newcommand*{\Taste}[1]{\setlength{\fboxsep}{1pt}\fbox{\fullh{}#1}}
+\newcommand*{\TasteE}[1]{\Taste{\setlength{\fboxsep}{1pt}#1}}
+\newcommand*{\TasteZ}[2]{\Taste{#1}\,+\,\Taste{#2}}
+\newcommand*{\TasteD}[3]{\Taste{#1}\,+\,\Taste{#2}\,+\,\Taste{#3}}
+\newcommand*{\TasteV}[4]{\Taste{#1}\,+\,\Taste{#2}\,+\,\Taste{#3}\,+\,\Taste{#4}}
+\newcommand*{\TasteA}[8]{\Taste{#1}\,+\,\Taste{#2}\,+\,\Taste{#3}\,+\,\Taste{#4}\,+\,\Taste{#5}\,+\,\Taste{#6}\,+\,\Taste{#7}\,+\,\Taste{#8}}
+
+% Exceptions
+\newcommand{\Exception}[1]{\texttt{#1Exception}}

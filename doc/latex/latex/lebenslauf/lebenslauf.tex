@@ -1,0 +1,73 @@
+\documentclass[11pt,a4paper]{moderncv}
+
+% moderncv themes
+%\moderncvtheme[grey]{casual}                 % optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
+\moderncvtheme[grey]{classic}                 % optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
+%\moderncvtheme[green]{classic}                % idem
+
+% character encoding
+\usepackage[utf8]{inputenc}                   % replace by the encoding you are using
+\usepackage[ngerman]{babel}                   % replace by the encoding you are using
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{fixltx2e}
+\usepackage{lmodern}
+\usepackage{fancyhdr}
+\usepackage{ellipsis}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+
+%\input{basis/metadata}
+
+% adjust the page margins
+\usepackage[scale=0.8]{geometry}
+\setlength{\hintscolumnwidth}{3cm}						% if you want to change the width of the column with the dates
+%\AtBeginDocument{\setlength{\maketitlenamewidth}{6cm}}  % only for the classic theme, if you want to change the width of your name placeholder (to leave more space for your address details
+%\AtBeginDocument{\recomputelengths}                     % required when changes are made to page layout lengths
+
+% personal data
+\firstname{Lebenslauf}
+\familyname{}
+\title{Max Mustermann}
+\address{Musterstraße 7}{01010~Musterstadt}
+\mobile{0176\,--\,987654321}
+\phone{01234\,--\,567890}
+\email{mail@mustermann.de}
+
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+\maketitle
+
+\section{Schulbildung}
+\cventry{07/2000 -- 06/2013}{Gymnasium}{Musterstadtschule}{Musterstadt}{}{}  % arguments 3 to 6 can be left empty
+\cventry{seit 09/2013}{Hochschule}{Universität Musterstadt}{Musterstadt}{}{Studiengang: Informatik B.\,Sc. (x. Semester)}
+\cvline{2013}{\textbf{Abitur}}
+
+\section{Praktika}
+\cventry{08/2011 -- 07/2012}{Informationstechnik}{Musterbetrieb}{Musterstadt}{}{}
+
+\section{Sprachen}
+\cvlanguage{Englisch}{Grundkenntnisse}{Schulenglisch}
+
+\section{Informationstechnische Kenntnisse}
+\cvcomputer{Betriebssysteme}{\textbf{Linux}, Editor vim, u.~a.;\newline{}\textbf{Windows}}{Office}{Gute Kenntnisse in
+\textbf{MS~Word}, \textbf{MS~Powerpoint} und in \textbf{MS~Excel};\newline{} Gute Kenntnisse im Textsatzsystem \textbf{\LaTeX}}
+\cvline{Programmiersprachen}{\small Gute Kenntnisse in \textbf{Java};\newline{}Gute Kenntnisse in \textbf{HTML}, \textbf{CSS}}
+
+\renewcommand{\listitemsymbol}{$\circ$} % change the symbol for lists
+
+\section{Sonstiges zur Informationstechnik}
+\cvline{Blog}{Führen eines Blogs über \LaTeX{}.}
+
+%\section{Interessen}
+%\cvline{}{Hobby}
+
+\emptysection \closesection
+\vspace*{2mm}
+\hspace*{4mm}\includegraphics[width=90pt]{unterschrift.pdf}
+\newline{}
+Musterstadt, den \today
+
+\end{document}

@@ -1,0 +1,21 @@
+#!/bin/bash
+# Author:  DSIW <dsiw@privatdemail.net>
+# Blog:    https://dsiw.wordpress.com/
+# License: GPL
+readonly PWD=$(pwd)
+TMP_DIR=$(mktemp -d)
+BASENAME=$(basename "$1" .rar)
+rename 's/\s/_/g' "$1"
+FILE=$(echo "$BASENAME" | sed 's/\s/_/g')
+UNZIP_DIR=${TMP_DIR}/${FILE}
+TAR=${FILE}.tar.gz
+
+mkdir -p ${UNZIP_DIR}
+unrar e "${BASENAME}.rar" "${UNZIP_DIR}" &&
+cd ${TMP_DIR} 1>/dev/null 2>&1 # error, because $PWD is readonly
+tar -cvz --atime-preserve -f ${TAR} ${FILE} &&
+mv ${TAR} ${PWD} &&
+cd - 1>/dev/null 2>&1 # error, because $PWD is readonly
+chmod -x ${TAR} &&
+rm "${BASENAME}.rar" &&
+rm -rf ${TMP_DIR}

@@ -1,0 +1,30 @@
+% Schriftgröße, Layout, Papierformat, Art des Dokumentes
+\documentclass[12pt,halfparskip,oneside,a4paper]{scrartcl}
+
+\usepackage[utf8]{inputenc}	% Umlaute ermöglichen
+\input{basis/metadata} % Muss als erstes geladen werden
+\renewcommand{\modul}{[Modul]}
+\renewcommand{\titel}{Übungsblatt 1}
+\renewcommand{\untertitel}{Untertitel}
+\renewcommand{\datum}{\today}
+\renewcommand{\version}{1.0}
+\date{\datum}
+\title{\titel}
+\input{basis/packages}
+\input{basis/befehle}
+\input{basis/layout-docu}
+\input{silbentrennung}
+
+\begin{document}
+\begin{center}
+	\LARGE{\textsf{\textbf{\titel}}}	
+\end{center}
+
+%----------------------------------------------------------
+
+\begin{enumerate}[a)]
+	\item \ldots
+\end{enumerate}
+%----------------------------------------------------------
+
+\end{document}

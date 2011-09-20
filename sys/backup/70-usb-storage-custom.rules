@@ -1,0 +1,2 @@
+# USB Festplatte für externes Backup
+BUS=="usb", KERNEL=="sd?1", SYSFS{serial}=="57442D574341553439323533343336", SYMLINK+="backup-extern", RUN+="/home/USER/bin/mountbackup", RUN+="/usr/bin/logger Starte Backup.", RUN+="/home/USER/bin/backup"

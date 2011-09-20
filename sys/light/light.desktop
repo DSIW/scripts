@@ -1,0 +1,25 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Icon=/home/max/.icons/light.png
+Type=Application
+Categories=System;
+Exec=xset dpms force off
+Name=Backlight
+
+X-Ayatana-Desktop-Shortcuts=Light;Normal;Dark
+
+[Light Shortcut Group]
+Name=Helligkeit auf 100%
+Exec=nvclock -S 100
+TargetEnvironment=Unity
+
+[Normal Shortcut Group]
+Name=Helligkeit auf 45%
+Exec=nvclock -S 45
+TargetEnvironment=Unity
+
+[Dark Shortcut Group]
+Name=Helligkeit auf 20%
+Exec=nvclock -S 20
+TargetEnvironment=Unity
