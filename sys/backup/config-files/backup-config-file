@@ -1,24 +1,92 @@
 #!/bin/bash
-BACKUP_DIR="/home/$(whoami)/sys/backup/sys/configs/" 
-CONFIG_LOG="$BACKUP_DIR/configs.log"
+BACKUP_DIR="/home/$(whoami)/sys/backup/sys/configs" 
+CONFIG_LOG="${BACKUP_DIR}/configs.log"
 
-ERROR=0
+##### DO NOT EDIT #####
 
 if [ $# -lt 1 ]; then
   echo "Es müssen Parameter gesetzt sein!"
   exit 1;
 fi
 
+ERROR=0
+RESTORE=0
+while getopts ':rf' OPTION ; do
+  case "$OPTION" in
+    r) RESTORE=1;;
+    f) RESTORE=2;;
+    *) echo "Unbekannter Parameter"; exit 1
+  esac
+done
+
+###### RESTORE ######
+
+if [ ! $RESTORE -eq 0 ]; then
+  for line in $(xargs -a $CONFIG_LOG); do 
+    TMPERROR=0
+    if [ $RESTORE -eq 2 ]; then
+      if ! sudo cp -vf $(echo ${BACKUP_DIR}$line) $line; then
+        TMPERROR=1 
+        ERROR=1
+        continue
+      fi
+    else
+      if [ -f $line ]; then
+        read -p "cp: „$(basename $line)“ überschreiben (y/N)? "
+        if [ "$REPLY" == "y" ]; then
+          if ! sudo cp -vf $(echo ${BACKUP_DIR}$line) $line; then
+            TMPERROR=1 
+            ERROR=1
+            continue
+          fi
+        else
+          TMPERROR=2
+        fi
+      else
+        if ! sudo cp -v $(echo ${BACKUP_DIR}$line) $line; then
+          TMPERROR=1 
+          ERROR=1
+          continue
+        fi
+      fi
+    fi
+
+    if [ $TMPERROR -eq 0 ]; then
+      echo "OK    Konfigurationsdatei „$line“ wurde erfolgreich wiederhergestellt."
+    elif [ $TMPERROR -eq 2 ]; then
+      echo "OK    Konfigurationsdatei „$line“ wurde nicht wiederhergestellt."
+    else
+      echo "ERROR Konfigurationsdatei „$line“ wurde nicht wiederhergestellt!"
+    fi
+  done
+
+  if [ $? -eq 1 ] || [ $ERROR -eq 1 ]; then
+    echo "Wiederherstellung war nicht erfolgreich!"
+    exit 1;
+  else
+    echo "Wiederherstellung wurde erfolgreich abgeschlossen."
+    exit 0;
+  fi
+fi
+
+###### BACKUP ######
+
 mkdir -p $BACKUP_DIR
 
 for arg in $@; do
-  if ! sudo cp --parents "$arg" "$BACKUP_DIR"; then
+  if ! sudo cp --parents "$arg" "$BACKUP_DIR/"; then
     ERROR=1 
     continue
   fi
 
+  if [ $? -eq 0 ]; then              
+    echo "OK    Konfigurationsdatei „$arg“ wurde in „$BACKUP_DIR/“ erfolgreich gesichert."
+  else
+    echo "ERROR Konfigurationsdatei „$arg“ wurde nicht gesichert!"
+  fi
+
   ALREADY_IN=0
-  configs=$(xargs --no-run-if-empty -a $CONFIG_LOG)
+  configs=$(xargs --no-run-if-empty -a $CONFIG_LOG 2>/dev/null)
   # test, if the config file is already in the logfile.
   for line in $configs; do
     if [[ $line == $arg ]]; then
@@ -27,13 +95,12 @@ for arg in $@; do
     fi
   done
 
-  # write the config file in the logfile, if it isn't in there.'
+  # write the config file in the logfile, if it isn't in there.
   #[ $ALREADY_IN ] || echo "$arg" >> "$CONFIG_LOG" && echo "written"
   if [ $ALREADY_IN -eq 0 ]; then
     echo "$arg" >> "$CONFIG_LOG"
   fi
 
-  echo "Konfigurationsdatei '$arg' wurde in '$BACKUP_DIR' erfolgreich gesichert."
 done
 
 if [ $ERROR -eq 0 ]; then 
