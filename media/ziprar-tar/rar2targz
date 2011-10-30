@@ -1,6 +1,6 @@
 #!/bin/bash
 # Author:  DSIW <dsiw@privatdemail.net>
-# Blog:    https://dsiw.wordpress.com/
+# Blog:    http://blog.dsiw-it.de/
 # License: GPL
 readonly PWD=$(pwd)
 TMP_DIR=$(mktemp -d)

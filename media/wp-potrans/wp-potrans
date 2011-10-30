@@ -1,0 +1,126 @@
+#!/bin/bash
+
+#### functions ####
+
+function help {
+SCRIPTNAME=$(basename $0)
+
+echo "WP-POTrans - PO translation hard for Wordpress themes"
+echo ""
+echo "Usage:   $SCRIPTNAME -l [language] -d [path]"
+echo "         Translates a Wordpress-Theme hard. All english strings in the theme files will be translated."
+echo "         Tipp: Please make sure, that all strings will be converted."
+echo ""
+echo "Arguments:"
+echo "    -h | --help  show help (this text) and exit"
+echo "    -l           language *.po file"
+echo "    -d           path of theme"
+echo ""
+echo "Info:"
+echo "    You have to set the path of the theme which will be converted!"
+echo "    There have to be a directory which is called 'languages' and which"
+echo "    have *.po files in there."
+echo ""
+echo "Example:"
+echo "    $SCRIPTNAME -l de_DE -d /home/$(whoami)/wordpress/wp-content/themes/owntheme"
+echo "    $SCRIPTNAME -d /home/$(whoami)/wordpress/wp-content/themes/owntheme -l de_DE"
+exit 0
+}
+
+#### HELP info ####
+
+if [ ! $# -eq 4 ]; then
+  help
+fi
+
+for i in "$@"; do
+  if [ "$i" == "-h" ] || [ "$i" == "--help" ]; then
+    help
+  fi
+done
+
+#### set args ####
+
+LANG=""
+THEME_PATH=""
+while getopts ':l:d:' OPTION ; do
+  case "$OPTION" in
+    l) LANG=$OPTARG;;
+    d) THEME_PATH=$OPTARG;;
+    *) help
+  esac
+done
+
+TMP_DIR=$(mktemp -d) 
+PO_ORIG="languages/$LANG.po"
+PO="$TMP_DIR/$LANG.po"
+
+if [ -r $PO_ORIG ]; then
+  echo "OK:    File '$PO_ORIG' exists and is readable."
+else
+  echo "ERROR: File '$PO_ORIG' doesn't exist or isn't readable."
+  exit 1
+fi
+
+
+cd $THEME_PATH
+cp $PO_ORIG $PO
+
+sed -i -e 's/#.*//' -e 's/^\".*//' -e '/^$/ d' $PO
+
+if [ ! $(($(($(wc -l $PO | cut -d ' ' -f 1)))%2)) -eq 0 ]; then
+  echo "ERROR: NOT EVEN"
+  exit 1;
+fi
+
+declare -A SEARCH
+declare -A REPLACE
+
+#### preparation ####
+
+echo "OK:    EVEN"
+counter=0
+while read line; do
+  ERROR=0
+  if [[ ! "$line" =~ .*msgid.* ]]; then #! echo $line | grep -i "msgid" >/dev/null; then
+    ERROR=1
+  fi
+
+  if [ $ERROR -eq 0 ]; then
+    #PATTERN_SEARCH=$(echo $line | sed -e 's/msgid //g' -e 's/\"//g') # alternative
+    PATTERN_SEARCH=${line//\"/} # substitution
+    PATTERN_SEARCH=${PATTERN_SEARCH/msgid /} # substitution
+    SEARCH[$counter]=$PATTERN_SEARCH
+  else
+    #PATTERN_REPLACE=$(echo $line | sed -e 's/msgstr //g' -e 's/\"//g') # alternative
+    PATTERN_REPLACE=${line//\"/}
+    PATTERN_REPLACE=${PATTERN_REPLACE/msgstr /}
+    REPLACE[$counter]=$PATTERN_REPLACE
+    ((counter++))
+  fi
+done < $PO
+
+#### conversion ####
+
+for file in $(find . -type f -iname "*.php"); do
+  for ((i=0; i<${#SEARCH[@]}; i++)); do
+    sed -i -e "s/'${SEARCH[$i]}'/'${REPLACE[$i]}'/g" $file
+  done
+done
+
+#### test ####
+
+for ((i=0; i<${#SEARCH[@]}; i++)); do
+  s=${SEARCH[$i]}
+  r=${REPLACE[$i]}
+  if [ "s" == "r" ]; then
+    continue
+  fi
+  if grep -R "'$i'" *.php; then
+    echo "ERROR: '$i'"
+    exit 1
+  fi
+done
+
+echo "Files successfully written."
+exit 0

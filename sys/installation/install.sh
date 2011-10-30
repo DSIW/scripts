@@ -2,7 +2,7 @@
 
 # Installations-Skript
 # Autor: DSIW <dsiw@privatdemail.net>
-# Blog:  http://dsiw.wordpress.com/
+# Blog:  http://blog.dsiw-it.de/
 # Datum: 2011-04-05
 
 cd ~/dokumente/skripte/install-os

@@ -1,21 +1,30 @@
 #!/bin/bash
 # Author:  DSIW <dsiw@privatdemail.net>
-# Blog:    https://dsiw.wordpress.com/
+# Blog:    http://blog.dsiw-it.de/
 # License: GPL
-readonly PWD=$(pwd)
-TMP_DIR=$(mktemp -d)
-BASENAME=$(basename "$1" .zip)
-rename 's/\s/_/g' "$1"
-FILE=$(echo "$BASENAME" | sed 's/\s/_/g')
+
+FILETYPE=".zip"
+if [ ! $# -eq 1 ] || [[ ! "$(file $1)" =~ .*Zip\ archive\ data.* ]]; then
+  echo "Please set an archive to convert."
+  exit 1;
+fi
+
+ARCHIVE="$1"
+DIR="$(cd "$(dirname $ARCHIVE)" && pwd)"
+readonly PWD="$(pwd)"
+TMP_DIR="$(mktemp -d)"
+BASENAME="$(basename $ARCHIVE $FILETYPE)"
+#FILE=$(echo "$BASENAME" | sed 's/\s/_/g')
+FILE=$DIR/${BASENAME/ /}
 UNZIP_DIR=${TMP_DIR}/${FILE}
 TAR=${FILE}.tar.gz
 
-mkdir -p ${UNZIP_DIR}
-unzip "${BASENAME}.zip" -d "${UNZIP_DIR}" &&
-cd ${TMP_DIR} 1>/dev/null 2>&1 # error, because $PWD is readonly
+mkdir -p $UNZIP_DIR
+unzip $ARCHIVE -d "$UNZIP_DIR" &&
+cd $TMP_DIR 1>/dev/null 2>&1 # error, because $PWD is readonly
 tar -cvz --atime-preserve -f ${TAR} ${FILE} &&
-mv ${TAR} ${PWD} &&
-cd - 1>/dev/null 2>&1 # error, because $PWD is readonly
-chmod -x ${TAR} &&
-rm "${BASENAME}.zip" &&
-rm -rf ${TMP_DIR}
+mv $TAR $PWD &&
+cd $PWD 1>/dev/null 2>&1 # error, because $PWD is readonly
+chmod -x $TAR &&
+rm $ZIP &&
+rm -rf $TMP_DIR
