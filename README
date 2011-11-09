@@ -21,7 +21,6 @@ Content:
 │       │   ├── lebenslauf.pdf.bak
 │       │   ├── lebenslauf.png
 │       │   ├── lebenslauf.tex
-│       │   ├── lebenslauf.tex~
 │       │   ├── moderncvthemeclassic.sty
 │       │   ├── unterschrift.pdf
 │       │   └── unterschrift.png
@@ -42,42 +41,42 @@ Content:
 │           └── silbentrennung.tex
 ├── media
 │   ├── wp-potrans
-│   │   ├── wp-potrans
+│   │   └── wp-potrans
 │   └── ziprar-tar
 │       ├── c.tar.gz
 │       ├── c.zip
 │       ├── c.zip.tar.gz
 │       ├── rar2targz
-│       ├── zip2targz
+│       └── zip2targz
 ├── README
 ├── study
 │   └── dl-uebungen
 │       ├── dlRegex.sh
 │       └── dlStudium.sh
-└── sys
-    ├── backup
-    │   ├── config-files
-    │   │   ├── backup-config-file
-    │   │   └── backup-config-file~
-    │   └── system
-    │       ├── 70-usb-storage-custom.rules
-    │       ├── backup
-    │       └── backup.sh
-    ├── installation
-    │   ├── convertToInstall.sh
-    │   ├── convertToPpa.sh
-    │   ├── install
-    │   ├── install-own.sh
-    │   ├── install.sh
-    │   ├── newppa
-    │   ├── packages.sort.list
-    │   ├── ppa.list
-    │   └── ppa.sort.list
-    ├── light
-    │   ├── install.sh
-    │   ├── light.desktop
-    │   ├── light.png
-    │   └── README
-    └── linefeed
-        ├── linefeed-DOS2UNIX.sh
-        └── linefeed-UNIX2DOS.sh
+├── sys
+│   ├── backup
+│   │   ├── config-files
+│   │   │   └── backup-config-file
+│   │   └── system
+│   │       ├── 70-usb-storage-custom.rules
+│   │       ├── backup
+│   │       └── backup.sh
+│   ├── installation
+│   │   ├── convertToInstall.sh
+│   │   ├── convertToPpa.sh
+│   │   ├── install
+│   │   ├── install-own.sh
+│   │   ├── install.sh
+│   │   ├── newppa
+│   │   ├── packages.sort.list
+│   │   ├── ppa.list
+│   │   └── ppa.sort.list
+│   ├── light
+│   │   ├── install.sh
+│   │   ├── light.desktop
+│   │   ├── light.png
+│   │   └── README
+│   └── linefeed
+│       ├── linefeed-DOS2UNIX.sh
+│       └── linefeed-UNIX2DOS.sh
+└── tree.sh
