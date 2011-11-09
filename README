@@ -53,30 +53,29 @@ Content:
 │   └── dl-uebungen
 │       ├── dlRegex.sh
 │       └── dlStudium.sh
-├── sys
-│   ├── backup
-│   │   ├── config-files
-│   │   │   └── backup-config-file
-│   │   └── system
-│   │       ├── 70-usb-storage-custom.rules
-│   │       ├── backup
-│   │       └── backup.sh
-│   ├── installation
-│   │   ├── convertToInstall.sh
-│   │   ├── convertToPpa.sh
-│   │   ├── install
-│   │   ├── install-own.sh
-│   │   ├── install.sh
-│   │   ├── newppa
-│   │   ├── packages.sort.list
-│   │   ├── ppa.list
-│   │   └── ppa.sort.list
-│   ├── light
-│   │   ├── install.sh
-│   │   ├── light.desktop
-│   │   ├── light.png
-│   │   └── README
-│   └── linefeed
-│       ├── linefeed-DOS2UNIX.sh
-│       └── linefeed-UNIX2DOS.sh
-└── tree.sh
+└── sys
+    ├── backup
+    │   ├── config-files
+    │   │   └── backup-config-file
+    │   └── system
+    │       ├── 70-usb-storage-custom.rules
+    │       ├── backup
+    │       └── backup.sh
+    ├── installation
+    │   ├── convertToInstall.sh
+    │   ├── convertToPpa.sh
+    │   ├── install
+    │   ├── install-own.sh
+    │   ├── install.sh
+    │   ├── newppa
+    │   ├── packages.sort.list
+    │   ├── ppa.list
+    │   └── ppa.sort.list
+    ├── light
+    │   ├── install.sh
+    │   ├── light.desktop
+    │   ├── light.png
+    │   └── README
+    └── linefeed
+        ├── linefeed-DOS2UNIX.sh
+        └── linefeed-UNIX2DOS.sh
