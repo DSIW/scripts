@@ -9,21 +9,75 @@ Blog:     http://blog.dsiw-it.de/
 License:  GPLv3
 
 Content:
+
 .
+├── dev
+│   └── newProjC
 ├── doc
 │   └── latex
-│       ├── dl-uebungen
 │       ├── lebenslauf
+│       │   ├── lebenslauf-ausschnitt.png
+│       │   ├── lebenslauf.pdf
+│       │   ├── lebenslauf.pdf.bak
+│       │   ├── lebenslauf.png
+│       │   ├── lebenslauf.tex
+│       │   ├── lebenslauf.tex~
+│       │   ├── moderncvthemeclassic.sty
+│       │   ├── unterschrift.pdf
+│       │   └── unterschrift.png
 │       ├── letter
+│       │   ├── letter.pdf
+│       │   └── letter.tex
 │       └── newaufgaben
+│           ├── aufgaben.pdf
+│           ├── aufgaben.tex
+│           ├── basis
+│           │   ├── befehle.tex
+│           │   ├── layout-docu.tex
+│           │   ├── metadata.tex
+│           │   └── packages.tex
+│           ├── bibliographie.bib
+│           ├── grafiken
+│           │   └── 88x31.png
+│           └── silbentrennung.tex
 ├── media
+│   ├── wp-potrans
+│   │   ├── wp-potrans
 │   └── ziprar-tar
+│       ├── c.tar.gz
+│       ├── c.zip
+│       ├── c.zip.tar.gz
+│       ├── rar2targz
+│       ├── zip2targz
+├── README
+├── study
+│   └── dl-uebungen
+│       ├── dlRegex.sh
+│       └── dlStudium.sh
 └── sys
     ├── backup
     │   ├── config-files
+    │   │   ├── backup-config-file
+    │   │   └── backup-config-file~
     │   └── system
+    │       ├── 70-usb-storage-custom.rules
+    │       ├── backup
+    │       └── backup.sh
     ├── installation
+    │   ├── convertToInstall.sh
+    │   ├── convertToPpa.sh
+    │   ├── install
+    │   ├── install-own.sh
+    │   ├── install.sh
+    │   ├── newppa
+    │   ├── packages.sort.list
+    │   ├── ppa.list
+    │   └── ppa.sort.list
     ├── light
+    │   ├── install.sh
+    │   ├── light.desktop
+    │   ├── light.png
+    │   └── README
     └── linefeed
-
-15 directories
+        ├── linefeed-DOS2UNIX.sh
+        └── linefeed-UNIX2DOS.sh
